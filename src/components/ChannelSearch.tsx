@@ -8,9 +8,9 @@ interface Props {
 }
 
 const EXAMPLES = [
-  'https://youtube.com/@mkbhd',
-  'https://youtube.com/@veritasium',
-  'https://youtube.com/@linustechtips',
+  { label: '@mkbhd',         url: 'https://youtube.com/@mkbhd'         },
+  { label: '@veritasium',    url: 'https://youtube.com/@veritasium'    },
+  { label: '@linustechtips', url: 'https://youtube.com/@linustechtips' },
 ];
 
 export function ChannelSearch({ onSearch }: Props) {
@@ -25,22 +25,18 @@ export function ChannelSearch({ onSearch }: Props) {
     onSearch(trimmed);
   };
 
-  const handleExample = (url: string) => {
-    setValue(url);
-    inputRef.current?.focus();
-  };
-
   return (
     <div className="w-full max-w-2xl mx-auto">
       <form onSubmit={handleSubmit}>
         <div
-          className={`relative flex items-center rounded-2xl border transition-all duration-200 ${
-            focused
-              ? 'border-[#f97316]/60 shadow-[0_0_0_3px_rgba(249,115,22,0.15)]'
-              : 'border-white/10'
-          } bg-white/[0.04]`}
+          className="relative flex items-center rounded-2xl transition-all duration-200"
+          style={{
+            border: `1px solid ${focused ? 'var(--accent)' : 'var(--border-strong)'}`,
+            boxShadow: focused ? '0 0 0 3px var(--accent-dim)' : 'none',
+            background: 'var(--bg-elevated)',
+          }}
         >
-          <div className="absolute left-4 text-[#52525b]">
+          <div className="absolute left-4" style={{ color: 'var(--text-muted)' }}>
             <Link2 className="w-4 h-4" />
           </div>
 
@@ -51,8 +47,9 @@ export function ChannelSearch({ onSearch }: Props) {
             onChange={(e) => setValue(e.target.value)}
             onFocus={() => setFocused(true)}
             onBlur={() => setFocused(false)}
-            placeholder="Paste a YouTube channel URL or handle…"
-            className="flex-1 bg-transparent py-4 pl-11 pr-4 text-white placeholder:text-[#3f3f46] text-sm outline-none font-body"
+            placeholder="Paste a YouTube channel URL or @handle…"
+            className="flex-1 bg-transparent py-3.5 pl-11 pr-3 text-sm outline-none"
+            style={{ color: 'var(--text-primary)', fontFamily: 'var(--font-body)' }}
             autoComplete="off"
             spellCheck={false}
           />
@@ -60,7 +57,13 @@ export function ChannelSearch({ onSearch }: Props) {
           <button
             type="submit"
             disabled={!value.trim()}
-            className="m-1.5 px-5 py-2.5 rounded-xl bg-[#f97316] text-white text-sm font-medium hover:bg-[#ea580c] disabled:opacity-30 disabled:cursor-not-allowed transition-colors flex items-center gap-2 shrink-0"
+            className="m-1.5 px-5 py-2.5 rounded-xl text-white text-sm font-semibold flex items-center gap-2 shrink-0 transition-all disabled:opacity-30 disabled:cursor-not-allowed"
+            style={{
+              background: 'var(--accent)',
+              fontFamily: 'var(--font-display)',
+            }}
+            onMouseOver={(e) => { if (value.trim()) (e.currentTarget as HTMLElement).style.background = 'var(--accent-light)'; }}
+            onMouseOut={(e) => { (e.currentTarget as HTMLElement).style.background = 'var(--accent)'; }}
           >
             <Search className="w-3.5 h-3.5" />
             Analyze
@@ -68,17 +71,20 @@ export function ChannelSearch({ onSearch }: Props) {
         </div>
       </form>
 
-      {/* Quick examples */}
+      {/* Quick-fill examples */}
       <div className="flex flex-wrap items-center justify-center gap-2 mt-3">
-        <span className="text-xs text-[#3f3f46]">Try:</span>
-        {EXAMPLES.map((url) => (
+        <span className="text-xs" style={{ color: 'var(--text-faint)' }}>Try:</span>
+        {EXAMPLES.map(({ label, url }) => (
           <button
-            key={url}
+            key={label}
             type="button"
-            onClick={() => handleExample(url)}
-            className="text-xs px-2.5 py-1 rounded-full border border-white/[0.08] text-[#71717a] hover:text-white hover:border-white/20 transition-all"
+            onClick={() => { setValue(url); inputRef.current?.focus(); }}
+            className="text-xs px-2.5 py-1 rounded-full transition-all"
+            style={{ border: '1px solid var(--border)', color: 'var(--text-muted)' }}
+            onMouseOver={(e) => { (e.currentTarget as HTMLElement).style.color = 'var(--accent)'; (e.currentTarget as HTMLElement).style.borderColor = 'var(--accent)'; }}
+            onMouseOut={(e) => { (e.currentTarget as HTMLElement).style.color = 'var(--text-muted)'; (e.currentTarget as HTMLElement).style.borderColor = 'var(--border)'; }}
           >
-            {url.replace('https://youtube.com/', '')}
+            {label}
           </button>
         ))}
       </div>
