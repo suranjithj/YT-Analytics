@@ -99,7 +99,7 @@ export function PerformanceChart({ videos, filters, onChange }: Props) {
           onChange={(e) =>
             onChange({ ...filters, period: e.target.value as FilterState['period'] })
           }
-          className="bg-black border border-white/10 text-xs px-2 py-1 rounded"
+          className="bg-black border border-white/10 text-sm px-2 py-1 rounded"
         >
           <option value="this_month">This Month</option>
           <option value="last_7">Last 7 Days</option>
@@ -112,7 +112,7 @@ export function PerformanceChart({ videos, filters, onChange }: Props) {
           onClick={() =>
             onChange({ ...filters, onlyTrending: !filters.onlyTrending })
           }
-          className="text-xs px-2 py-1 border border-white/10 rounded"
+          className="text-sm px-2 py-1 border border-white/10 rounded"
         >
           🔥 Trending
         </button>
@@ -124,7 +124,7 @@ export function PerformanceChart({ videos, filters, onChange }: Props) {
           <button
             key={t.id}
             onClick={() => setTab(t.id)}
-            className={`px-3 py-1 text-xs rounded ${
+            className={`px-3 py-1 text-sm rounded ${
               tab === t.id ? 'bg-orange-500 text-white' : 'text-zinc-400'
             }`}
           >
@@ -197,11 +197,11 @@ export function PerformanceChart({ videos, filters, onChange }: Props) {
 
         {/* Timeline */}
         {tab === 'timeline' && (
-          <ResponsiveContainer width="100%" height={320}>
+          <ResponsiveContainer width="100%" height={320} >
             <BarChart data={timelineData}>
               <CartesianGrid stroke="rgba(255,255,255,0.05)" />
               <XAxis dataKey="month" />
-              <YAxis yAxisId="views" />
+              <YAxis yAxisId="views" tickFormatter={(v: number) => formatCount(v)} />
               <YAxis yAxisId="count" orientation="right" />
               <Tooltip contentStyle={tooltipStyle} />
               <Legend />

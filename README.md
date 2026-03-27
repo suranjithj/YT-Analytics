@@ -93,6 +93,17 @@ src/
 │   └── export.ts            # CSV export
 │
 └── components/
+    ├─ sections/
+    │   ├─ HeroSection.tsx
+    │   ├─ MarqueeSection.tsx
+    │   ├─ FeaturesSection.tsx
+    │   ├─ HowItWorksSection.tsx
+    │   ├─ StatsSection.tsx
+    │   ├─ TestimonialsSection.tsx
+    │   ├─ PricingSection.tsx
+    │   ├─ AboutSection.tsx
+    │   ├─ FAQSection.tsx
+    │   └─ ContactSection.tsx
     ├── ChannelSearch.tsx    # URL input form
     ├── ChannelHeader.tsx    # Channel avatar + stats
     ├── StatsOverview.tsx    # 6-card metric summary

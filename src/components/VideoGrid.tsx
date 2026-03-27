@@ -113,13 +113,13 @@ function ListRow({ video, rank }: { video: VideoItem; rank: number }) {
             </span>
           )}
         </div>
-        <p className="text-xs text-[#52525b] mt-0.5 flex items-center gap-1">
+        <p className="text-sm text-[#52525b] mt-0.5 flex items-center gap-1">
           <Clock className="w-3 h-3" /> {publishedAgo}
         </p>
       </div>
 
       {/* Metrics */}
-      <div className="hidden sm:flex items-center gap-5 text-xs text-[#71717a] shrink-0">
+      <div className="hidden sm:flex items-center gap-5 text-sm text-[#71717a] shrink-0">
         <span className="flex items-center gap-1">
           <Eye className="w-3 h-3" /> {formatCount(video.metrics.viewCount)}
         </span>
@@ -135,7 +135,7 @@ function ListRow({ video, rank }: { video: VideoItem; rank: number }) {
       {/* Score */}
       <div className="shrink-0 flex flex-col items-end gap-1">
         <span
-          className="text-xs font-mono font-semibold px-2 py-0.5 rounded-full"
+          className="text-sm font-mono font-semibold px-2 py-0.5 rounded-full"
           style={{ color: scoreColor, backgroundColor: `${scoreColor}18` }}
         >
           {video.performanceScore}

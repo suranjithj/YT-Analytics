@@ -63,7 +63,7 @@ export function FilterBar({ filters, onChange, totalCount, filteredCount, onExpo
             <button
               key={p.value}
               onClick={() => set('period', p.value)}
-              className={`px-3 py-1 rounded-lg text-xs font-medium transition-colors ${
+              className={`px-3 py-1 rounded-lg text-sm font-medium transition-colors ${
                 filters.period === p.value
                   ? 'bg-[#f97316] text-white'
                   : 'text-[#71717a] hover:text-white'
@@ -80,7 +80,7 @@ export function FilterBar({ filters, onChange, totalCount, filteredCount, onExpo
           <select
             value={filters.sortKey}
             onChange={(e) => set('sortKey', e.target.value as SortKey)}
-            className="bg-transparent text-xs text-[#a1a1aa] outline-none cursor-pointer"
+            className="bg-transparent text-sm text-[#a1a1aa] outline-none cursor-pointer"
           >
             {SORT_KEYS.map((s) => (
               <option key={s.value} value={s.value} className="bg-[#1a1a1e]">
@@ -93,7 +93,7 @@ export function FilterBar({ filters, onChange, totalCount, filteredCount, onExpo
         {/* Sort order */}
         <button
           onClick={() => set('sortOrder', filters.sortOrder === 'desc' ? 'asc' : 'desc')}
-          className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/[0.03] border border-white/[0.06] text-xs text-[#71717a] hover:text-white transition-colors"
+          className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/[0.03] border border-white/[0.06] text-sm text-[#71717a] hover:text-white transition-colors"
         >
           <ArrowUpDown className="w-3 h-3" />
           {filters.sortOrder === 'desc' ? 'Highest first' : 'Lowest first'}
@@ -102,7 +102,7 @@ export function FilterBar({ filters, onChange, totalCount, filteredCount, onExpo
         {/* Trending toggle */}
         <button
           onClick={() => set('onlyTrending', !filters.onlyTrending)}
-          className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl border text-xs font-medium transition-colors ${
+          className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl border text-sm font-medium transition-colors ${
             filters.onlyTrending
               ? 'bg-[#f97316]/15 border-[#f97316]/40 text-[#fb923c]'
               : 'bg-white/[0.03] border-white/[0.06] text-[#71717a] hover:text-white'
@@ -113,7 +113,7 @@ export function FilterBar({ filters, onChange, totalCount, filteredCount, onExpo
         </button>
 
         {/* Result count */}
-        <span className="ml-auto text-xs text-[#3f3f46]">
+        <span className="ml-auto text-sm text-[#3f3f46]">
           {filteredCount === totalCount
             ? `${totalCount} videos`
             : `${filteredCount} of ${totalCount}`}

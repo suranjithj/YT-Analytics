@@ -35,7 +35,7 @@ export default function FeaturesSection() {
                   <Icon className="w-5 h-5" style={{ color: f.color }} />
                 </div>
                 <h3 className="text-sm font-semibold mb-2" style={{ fontFamily: 'var(--font-display)', color: 'var(--text-primary)' }}>{f.title}</h3>
-                <p className="text-xs leading-relaxed" style={{ color: 'var(--text-muted)' }}>{f.desc}</p>
+                <p className="text-sm leading-relaxed" style={{ color: 'var(--text-muted)' }}>{f.desc}</p>
               </div>
             );
           })}

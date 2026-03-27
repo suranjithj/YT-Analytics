@@ -73,13 +73,13 @@ export function ChannelSearch({ onSearch }: Props) {
 
       {/* Quick-fill examples */}
       <div className="flex flex-wrap items-center justify-center gap-2 mt-3">
-        <span className="text-xs" style={{ color: 'var(--text-faint)' }}>Try:</span>
+        <span className="text-sm" style={{ color: 'var(--text-faint)' }}>Try:</span>
         {EXAMPLES.map(({ label, url }) => (
           <button
             key={label}
             type="button"
             onClick={() => { setValue(url); inputRef.current?.focus(); }}
-            className="text-xs px-2.5 py-1 rounded-full transition-all"
+            className="text-sm px-2.5 py-1 rounded-full transition-all"
             style={{ border: '1px solid var(--border)', color: 'var(--text-muted)' }}
             onMouseOver={(e) => { (e.currentTarget as HTMLElement).style.color = 'var(--accent)'; (e.currentTarget as HTMLElement).style.borderColor = 'var(--accent)'; }}
             onMouseOut={(e) => { (e.currentTarget as HTMLElement).style.color = 'var(--text-muted)'; (e.currentTarget as HTMLElement).style.borderColor = 'var(--border)'; }}

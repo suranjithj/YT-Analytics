@@ -59,7 +59,7 @@ export function ChannelHeader({ channel, fetchedAt }: Props) {
               {channel.title}
             </a>
             {channel.country && (
-              <span className="flex items-center gap-1 text-xs px-2 py-0.5 rounded-full border border-white/[0.08] text-[#71717a]">
+              <span className="flex items-center gap-1 text-sm px-2 py-0.5 rounded-full border border-white/[0.08] text-[#71717a]">
                 <Globe className="w-3 h-3" />
                 {channel.country}
               </span>
@@ -78,7 +78,7 @@ export function ChannelHeader({ channel, fetchedAt }: Props) {
         </div>
 
         {/* Data freshness badge */}
-        <div className="text-xs text-[#3f3f46] shrink-0">
+        <div className="text-sm text-[#3f3f46] shrink-0">
           Data fetched {dataAge}
         </div>
       </div>
@@ -89,9 +89,9 @@ export function ChannelHeader({ channel, fetchedAt }: Props) {
           <div key={label} className="rounded-xl bg-white/[0.03] border border-white/[0.06] p-3">
             <div className="flex items-center gap-1.5 mb-1">
               <Icon className="w-3.5 h-3.5 text-[#52525b]" />
-              <span className="text-xs text-[#52525b]">{label}</span>
+              <span className="text-sm text-[#52525b]">{label}</span>
             </div>
-            <p className="text-lg font-semibold text-white font-mono">{value}</p>
+            <p className="text-lg font-semibold font-mono" style={{ color: 'var(--text-primary)' }}>{value}</p>
           </div>
         ))}
       </div>

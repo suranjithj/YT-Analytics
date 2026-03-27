@@ -25,7 +25,7 @@ export default function StatsSection() {
                   <Icon className="w-5 h-5 mr-2" style={{ color: 'var(--accent)' }} />
                   <span className="text-4xl sm:text-5xl font-bold text-gradient" style={{ fontFamily: 'var(--font-display)' }}>{s.value}</span>
                 </div>
-                <p className="text-sm" style={{ color: 'var(--text-muted)' }}>{s.label}</p>
+                <p className="text-md" style={{ color: 'var(--text-muted)' }}>{s.label}</p>
               </div>
             );
           })}

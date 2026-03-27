@@ -32,8 +32,8 @@ export function ErrorState({ message, onRetry }: Props) {
 
       {isApiKey && (
         <div className="mb-6 p-4 rounded-xl bg-white/[0.04] border border-white/[0.08] text-left max-w-md mx-auto">
-          <p className="text-xs font-medium text-[#a1a1aa] mb-2">How to get a YouTube API key:</p>
-          <ol className="text-xs text-[#71717a] space-y-1 list-decimal list-inside">
+          <p className="text-sm font-medium text-[#a1a1aa] mb-2">How to get a YouTube API key:</p>
+          <ol className="text-sm text-[#71717a] space-y-1 list-decimal list-inside">
             <li>Go to Google Cloud Console</li>
             <li>Create or select a project</li>
             <li>Enable YouTube Data API v3</li>
@@ -44,7 +44,7 @@ export function ErrorState({ message, onRetry }: Props) {
             href="https://console.cloud.google.com/apis/credentials"
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-3 flex items-center gap-1.5 text-xs text-[#f97316] hover:underline"
+            className="mt-3 flex items-center gap-1.5 text-sm text-[#f97316] hover:underline"
           >
             Open Google Cloud Console <ExternalLink className="w-3 h-3" />
           </a>

@@ -39,7 +39,7 @@ export default function AboutSection() {
                   </div>
                   <div>
                     <p className="text-sm font-semibold" style={{ color: 'var(--text-primary)', fontFamily: 'var(--font-display)' }}>{title}</p>
-                    <p className="text-xs" style={{ color: 'var(--text-muted)' }}>{desc}</p>
+                    <p className="text-sm" style={{ color: 'var(--text-muted)' }}>{desc}</p>
                   </div>
                 </div>
               ))}
@@ -50,15 +50,15 @@ export default function AboutSection() {
               <div key={label} className="card p-6 text-center card-hover fade-up" style={{ animationDelay: `${i * 0.1}s` }}>
                 <Icon className="w-6 h-6 mx-auto mb-3" style={{ color: 'var(--accent)' }} />
                 <p className="text-3xl font-bold mb-1 text-gradient" style={{ fontFamily: 'var(--font-display)' }}>{value}</p>
-                <p className="text-xs" style={{ color: 'var(--text-muted)' }}>{label}</p>
+                <p className="text-sm" style={{ color: 'var(--text-muted)' }}>{label}</p>
               </div>
             ))}
             <div className="col-span-2 rounded-2xl p-5 text-center" style={{ background: 'var(--accent-dim)', border: '1px solid var(--accent-glow)' }}>
               <p className="text-sm font-medium mb-1" style={{ color: 'var(--accent)', fontFamily: 'var(--font-display)' }}>Built in public 🚀</p>
-              <p className="text-xs mb-3" style={{ color: 'var(--text-muted)' }}>Follow our journey on Twitter &amp; GitHub. We ship fast and fix things even faster.</p>
+              <p className="text-sm mb-3" style={{ color: 'var(--text-muted)' }}>Follow our journey on Twitter &amp; GitHub. We ship fast and fix things even faster.</p>
               <div className="flex items-center justify-center gap-4">
                 {[{ label: 'Twitter' }, { label: 'GitHub' }].map(({ label }) => (
-                  <a key={label} href="#" className="flex items-center gap-1.5 text-xs font-semibold" style={{ color: 'var(--accent)' }}>
+                  <a key={label} href="#" className="flex items-center gap-1.5 text-sm font-semibold" style={{ color: 'var(--accent)' }}>
                     <ExternalLink className="w-3.5 h-3.5" />{label}
                   </a>
                 ))}

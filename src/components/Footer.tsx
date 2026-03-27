@@ -72,7 +72,7 @@ export function Footer() {
           <div className="flex flex-col md:flex-row items-center justify-between gap-8">
             <div className="text-center md:text-left">
               <p
-                className="text-xs font-semibold tracking-widest uppercase mb-2"
+                className="text-sm font-semibold tracking-widest uppercase mb-2"
                 style={{ color: 'var(--accent)', fontFamily: 'var(--font-display)' }}
               >
                 Ready to start?
@@ -86,7 +86,7 @@ export function Footer() {
               </h3>
             </div>
             <div className="flex flex-col sm:flex-row gap-3 shrink-0">
-              <Link href="/analyze" className="btn-primary px-6 py-3 text-base">
+              <Link href="/analyze" className="flex items-center gap-2 btn-primary px-6 py-3 text-base">
                 <Zap className="w-4 h-4" />
                 Start Free Analysis
               </Link>
@@ -128,7 +128,7 @@ export function Footer() {
             </p>
 
             {/* Newsletter */}
-            <p className="text-xs font-semibold mb-2" style={{ color: 'var(--text-secondary)', fontFamily: 'var(--font-display)', letterSpacing: '0.05em', textTransform: 'uppercase' }}>
+            <p className="text-sm font-semibold mb-2" style={{ color: 'var(--text-secondary)', fontFamily: 'var(--font-display)', letterSpacing: '0.05em', textTransform: 'uppercase' }}>
               Get weekly insights
             </p>
             {subStatus === 'success' ? (
@@ -168,7 +168,7 @@ export function Footer() {
                   key={label}
                   href={href}
                   aria-label={label}
-                  className="w-9 h-9 rounded-lg flex items-center justify-center transition-colors text-xs font-semibold"
+                  className="w-9 h-9 rounded-lg flex items-center justify-center transition-colors text-sm font-semibold"
                   style={{ border: '1px solid var(--border)', color: 'var(--text-muted)' }}
                   onMouseOver={(e) => {
                     (e.currentTarget as HTMLElement).style.color = 'var(--accent)';
@@ -191,7 +191,7 @@ export function Footer() {
           {Object.entries(FOOTER_LINKS).map(([category, links]) => (
             <div key={category}>
               <h4
-                className="text-xs font-semibold uppercase tracking-widest mb-4"
+                className="text-sm font-semibold uppercase tracking-widest mb-4"
                 style={{ color: 'var(--text-secondary)', fontFamily: 'var(--font-display)' }}
               >
                 {category}
@@ -245,12 +245,12 @@ export function Footer() {
       </div>
 
       {/* ── Bottom bar ── */}
-      <div style={{ borderTop: '1px solid var(--border)' }}>
+      <div style={{ borderTop: '1px solid var(--border)' }} className="p-2">
         <div className="container-wide py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="text-xs text-center sm:text-left" style={{ color: 'var(--text-faint)' }}>
+          <p className="text-sm text-center sm:text-left" style={{ color: 'var(--text-faint)' }}>
             © {new Date().getFullYear()} YT Analytics. Not affiliated with Google LLC or YouTube.
           </p>
-          <div className="flex items-center gap-1 text-xs" style={{ color: 'var(--text-faint)' }}>
+          <div className="flex items-center gap-1 text-sm" style={{ color: 'var(--text-faint)' }}>
             <span>Powered by</span>
             <a
               href="https://developers.google.com/youtube/v3"

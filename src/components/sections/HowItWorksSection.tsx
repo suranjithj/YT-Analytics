@@ -39,7 +39,7 @@ export default function HowItWorksSection() {
           })}
         </div>
         <div className="mt-14 text-center">
-          <Link href="/analyze" className="btn-primary text-base px-8 py-3.5">
+          <Link href="/analyze" className="flex items-center gap-2 justify-center btn-primary text-base px-8 py-3.5">
             <Zap className="w-4 h-4" />Try It Now - It&apos;s Free
           </Link>
         </div>

@@ -24,12 +24,12 @@ export default function TestimonialsSection() {
           {TESTIMONIALS.map((t, i) => (
             <div key={t.name} className="card card-hover p-6 fade-up" style={{ animationDelay: `${i * 0.08}s` }}>
               <div className="flex gap-0.5 mb-4">{Array.from({ length: t.stars }).map((_, s) => (<Star key={s} className="w-3.5 h-3.5 fill-current" style={{ color: '#facc15' }} />))}</div>
-              <p className="text-sm leading-relaxed mb-5" style={{ color: 'var(--text-secondary)' }}>&ldquo;{t.quote}&rdquo;</p>
+              <p className="text-md leading-relaxed mb-5" style={{ color: 'var(--text-secondary)' }}>&ldquo;{t.quote}&rdquo;</p>
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-full flex items-center justify-center text-white text-sm font-bold shrink-0" style={{ background: t.color }}>{t.avatar}</div>
                 <div>
                   <p className="text-sm font-semibold" style={{ color: 'var(--text-primary)', fontFamily: 'var(--font-display)' }}>{t.name}</p>
-                  <p className="text-xs" style={{ color: 'var(--text-muted)' }}>{t.role}</p>
+                  <p className="text-sm" style={{ color: 'var(--text-muted)' }}>{t.role}</p>
                 </div>
               </div>
             </div>

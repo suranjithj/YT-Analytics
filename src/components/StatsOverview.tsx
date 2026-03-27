@@ -80,8 +80,8 @@ export function StatsOverview({ videos, filteredVideos }: Props) {
         >
           <Icon className="w-4 h-4 shrink-0" style={{ color }} />
           <div>
-            <p className="text-xs text-[#71717a] mb-0.5">{label}</p>
-            <p className="text-xl font-semibold text-white font-mono leading-none">{value}</p>
+            <p className="text-sm text-[#71717a] mb-0.5">{label}</p>
+            <p className="text-xl font-semibold font-mono leading-none" style={{ color: 'var(--text-primary)' }}>{value}</p>
           </div>
         </div>
       ))}

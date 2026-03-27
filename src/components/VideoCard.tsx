@@ -48,13 +48,13 @@ export function VideoCard({ video, rank }: Props) {
 
         {/* Duration badge */}
         {video.durationSeconds > 0 && (
-          <span className="absolute bottom-2 right-2 px-1.5 py-0.5 rounded bg-black/80 text-white text-xs font-mono font-medium">
+          <span className="absolute bottom-2 right-2 px-1.5 py-0.5 rounded bg-black/80 text-white text-sm font-mono font-medium">
             {formatDuration(video.durationSeconds)}
           </span>
         )}
 
         {/* Rank badge */}
-        <span className="absolute top-2 left-2 w-6 h-6 rounded-full bg-black/70 text-white text-xs font-bold flex items-center justify-center font-mono">
+        <span className="absolute top-2 left-2 w-6 h-6 rounded-full bg-black/70 text-white text-sm font-bold flex items-center justify-center font-mono">
           {rank}
         </span>
 
@@ -80,7 +80,7 @@ export function VideoCard({ video, rank }: Props) {
         </h3>
 
         {/* Metrics row */}
-        <div className="flex items-center gap-3 text-xs text-[#71717a]">
+        <div className="flex items-center gap-3 text-sm text-[#71717a]">
           <span className="flex items-center gap-1">
             <Eye className="w-3 h-3" />
             {formatCount(video.metrics.viewCount)}
@@ -97,20 +97,20 @@ export function VideoCard({ video, rank }: Props) {
 
         {/* Bottom row */}
         <div className="mt-auto flex items-center justify-between">
-          <span className="flex items-center gap-1 text-xs text-[#52525b]">
+          <span className="flex items-center gap-1 text-sm text-[#52525b]">
             <Clock className="w-3 h-3" />
             {publishedAgo}
           </span>
 
           <div className="flex items-center gap-2">
             {/* Engagement rate */}
-            <span className="text-xs text-[#71717a]">
+            <span className="text-sm text-[#71717a]">
               {video.engagementRate.toFixed(2)}% eng.
             </span>
 
             {/* Performance score pill */}
             <span
-              className="text-xs px-2 py-0.5 rounded-full font-mono font-medium"
+              className="text-sm px-2 py-0.5 rounded-full font-mono font-medium"
               style={{
                 color: scoreColor,
                 backgroundColor: `${scoreColor}18`,

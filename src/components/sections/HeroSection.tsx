@@ -13,7 +13,7 @@ export default function HeroSection() {
       <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: `linear-gradient(var(--border) 1px, transparent 1px),linear-gradient(90deg, var(--border) 1px, transparent 1px)`, backgroundSize: '52px 52px', maskImage: 'radial-gradient(ellipse 80% 60% at 50% 0%, black 20%, transparent 80%)' }} />
 
       <div className="relative z-10 max-w-4xl mx-auto w-full">
-        <div className="fade-up inline-flex items-center gap-2 px-4 py-1.5 rounded-full mb-6 text-xs font-semibold" style={{ background: 'var(--accent-dim)', color: 'var(--accent)', border: '1px solid var(--accent-glow)', fontFamily: 'var(--font-display)', letterSpacing: '0.06em', textTransform: 'uppercase' }}>
+        <div className="fade-up inline-flex items-center gap-2 px-4 py-1.5 rounded-full mb-6 text-sm font-semibold" style={{ background: 'var(--accent-dim)', color: 'var(--accent)', border: '1px solid var(--accent-glow)', fontFamily: 'var(--font-display)', letterSpacing: '0.06em', textTransform: 'uppercase' }}>
           <span className="w-1.5 h-1.5 rounded-full animate-pulse" style={{ background: 'var(--accent)' }} />
           YouTube Competitor Intelligence
         </div>
@@ -29,15 +29,15 @@ export default function HeroSection() {
         </p>
 
         <div className="fade-up delay-3 flex flex-col sm:flex-row items-center justify-center gap-3 mb-8">
-          <Link href="/analyze" className="btn-primary text-base px-7 py-3.5 w-full sm:w-auto justify-center">
+          <Link href="/analyze" className="flex btn-primary items-center gap-2 text-base px-7 py-3.5 w-full sm:w-auto justify-center">
             <Zap className="w-4 h-4" />Analyze a Channel Free
           </Link>
-          <a href="#features" onClick={(e) => { e.preventDefault(); document.querySelector('#features')?.scrollIntoView({ behavior: 'smooth' }); }} className="btn-ghost text-base px-7 py-3.5 w-full sm:w-auto justify-center">
+          <a href="#features" onClick={(e) => { e.preventDefault(); document.querySelector('#features')?.scrollIntoView({ behavior: 'smooth' }); }} className="flex items-center gap-2 btn-ghost text-base px-7 py-3.5 w-full sm:w-auto justify-center">
             <Play className="w-4 h-4" />See How It Works
           </a>
         </div>
 
-        <div className="fade-up delay-4 flex flex-wrap items-center justify-center gap-4 text-xs" style={{ color: 'var(--text-faint)' }}>
+        <div className="fade-up delay-4 flex flex-wrap items-center justify-center gap-4 text-sm" style={{ color: 'var(--text-faint)' }}>
           {['No credit card required', 'Free forever plan', 'Powered by YouTube Data API'].map(t => (
             <span key={t} className="flex items-center gap-1.5">
               <CheckCircle2 className="w-3.5 h-3.5" style={{ color: '#4ade80' }} />{t}
@@ -53,7 +53,7 @@ export default function HeroSection() {
             <div className="flex gap-1.5">
               <div className="w-3 h-3 rounded-full bg-red-400/60" /><div className="w-3 h-3 rounded-full bg-yellow-400/60" /><div className="w-3 h-3 rounded-full bg-green-400/60" />
             </div>
-            <div className="flex-1 mx-4 px-3 py-1 rounded-md text-xs font-mono" style={{ background: 'var(--bg-base)', color: 'var(--text-muted)', border: '1px solid var(--border)' }}>YT Analytics.app/analyze</div>
+            <div className="flex-1 mx-4 px-3 py-1 rounded-md text-sm font-mono" style={{ background: 'var(--bg-base)', color: 'var(--text-muted)', border: '1px solid var(--border)' }}>YT Analytics.app/analyze</div>
           </div>
           <div className="p-5 space-y-4">
             <div className="flex items-center gap-3">
@@ -63,7 +63,7 @@ export default function HeroSection() {
                 {[['12.4M','Views'],['890K','Subs'],['4.2%','Eng.']].map(([v,l]) => (
                   <div key={l} className="text-right">
                     <p className="text-sm font-bold" style={{ color: 'var(--accent)', fontFamily: 'var(--font-mono)' }}>{v}</p>
-                    <p className="text-xs" style={{ color: 'var(--text-faint)' }}>{l}</p>
+                    <p className="text-sm" style={{ color: 'var(--text-faint)' }}>{l}</p>
                   </div>
                 ))}
               </div>

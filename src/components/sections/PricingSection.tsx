@@ -46,7 +46,7 @@ export default function PricingSection() {
                 <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full text-xs font-bold text-white" style={{ background: 'var(--accent)', fontFamily: 'var(--font-display)', letterSpacing: '0.04em' }}>MOST POPULAR</div>
               )}
               <h3 className="text-lg font-bold mb-1" style={{ fontFamily: 'var(--font-display)', color: 'var(--text-primary)' }}>{plan.name}</h3>
-              <p className="text-xs mb-4" style={{ color: 'var(--text-muted)' }}>{plan.desc}</p>
+              <p className="text-sm mb-4" style={{ color: 'var(--text-muted)' }}>{plan.desc}</p>
               <div className="flex items-end gap-1 mb-5">
                 <span className="text-4xl font-bold" style={{ fontFamily: 'var(--font-display)', color: 'var(--text-primary)' }}>{plan.price}</span>
                 <span className="text-sm pb-1" style={{ color: 'var(--text-muted)' }}>{plan.period}</span>
@@ -73,7 +73,7 @@ export default function PricingSection() {
             </div>
           ))}
         </div>
-        <p className="text-center text-xs mt-8" style={{ color: 'var(--text-faint)' }}>All plans include a 14-day free trial. Cancel anytime.</p>
+        <p className="text-center text-md mt-8" style={{ color: 'var(--text-faint)' }}>All plans include a 14-day free trial. Cancel anytime.</p>
       </div>
     </section>
   );

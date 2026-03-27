@@ -1,11 +1,23 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: [
-      "i.ytimg.com",
-      "yt3.ggpht.com",
-      "yt3.googleusercontent.com",
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'i.ytimg.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'yt3.ggpht.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'yt3.googleusercontent.com',
+      },
     ],
+    // Disable server-side image optimization for external images.
+    // YouTube thumbnails load directly in the browser — no server proxy needed.
+    unoptimized: true,
   },
 };
 
