@@ -59,7 +59,7 @@ export function Footer() {
     <footer style={{ background: 'var(--bg-surface)', borderTop: '1px solid var(--border)' }}>
       {/* ── Top CTA band ── */}
       <div
-        className="relative overflow-hidden"
+        className="relative overflow-hidden pt-6 pb-6 mb-6"
         style={{ background: 'var(--bg-elevated)', borderBottom: '1px solid var(--border)' }}
       >
         <div
@@ -68,7 +68,7 @@ export function Footer() {
             background: 'radial-gradient(ellipse 60% 80% at 50% 100%, var(--accent-dim) 0%, transparent 70%)',
           }}
         />
-        <div className="container-wide py-12 md:py-16 relative z-10">
+        <div className="container-wide py-10 md:py-16 relative z-10">
           <div className="flex flex-col md:flex-row items-center justify-between gap-8">
             <div className="text-center md:text-left">
               <p
@@ -85,15 +85,15 @@ export function Footer() {
                 <br className="hidden sm:block" /> channel in 10 seconds.
               </h3>
             </div>
-            <div className="flex flex-col sm:flex-row gap-3 shrink-0">
-              <Link href="/analyze" className="flex items-center gap-2 btn-primary px-6 py-3 text-base">
+            <div className="flex flex-col sm:flex-row gap-3 shrink-0 w-full md:w-auto items-center">
+              <Link href="/analyze" className="flex items-center justify-center gap-2 btn-primary px-6 py-3 text-base w-full sm:w-auto">
                 <Zap className="w-4 h-4" />
                 Start Free Analysis
               </Link>
               <a
                 href="#pricing"
                 onClick={(e) => { e.preventDefault(); document.querySelector('#pricing')?.scrollIntoView({ behavior: 'smooth' }); }}
-                className="btn-ghost px-6 py-3 text-base"
+                className="btn-ghost px-6 py-3 text-base w-full sm:w-auto text-center"
               >
                 View Pricing
               </a>
