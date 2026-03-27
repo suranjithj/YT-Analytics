@@ -8,7 +8,7 @@ import {
 
 export default function HeroSection() {
   return (
-    <section className="relative min-h-[100dvh] flex flex-col items-center justify-center pt-16 px-4 text-center overflow-hidden" style={{ background: 'var(--bg-base)' }}>
+    <section className="relative min-h-[100dvh] flex flex-col items-center justify-center pt-36 pb-16 px-4 text-center overflow-hidden" style={{ background: 'var(--bg-base)' }}>
       <div className="absolute inset-0 pointer-events-none" style={{ background: 'radial-gradient(ellipse 90% 60% at 50% 15%, var(--accent-glow) 0%, transparent 65%)' }} />
       <div className="absolute inset-0 pointer-events-none" style={{ backgroundImage: `linear-gradient(var(--border) 1px, transparent 1px),linear-gradient(90deg, var(--border) 1px, transparent 1px)`, backgroundSize: '52px 52px', maskImage: 'radial-gradient(ellipse 80% 60% at 50% 0%, black 20%, transparent 80%)' }} />
 

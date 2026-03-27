@@ -10,22 +10,16 @@ function apiKey(): string {
 
 // ─── URL Parsing ──────────────────────────────────────────────────────────────
 
-/**
- * Extracts a YouTube channel identifier from various URL formats.
- * Handles: /channel/UC..., /@handle, /c/name, /user/name, bare IDs.
- */
 export function parseChannelInput(input: string): {
   type: 'id' | 'handle' | 'username' | 'custom';
   value: string;
 } {
   const raw = input.trim();
 
-  // Direct channel ID (starts with UC)
   if (/^UC[\w-]{21}$/.test(raw)) {
     return { type: 'id', value: raw };
   }
 
-  // Extract from URL
   try {
     const url = new URL(raw.startsWith('http') ? raw : `https://${raw}`);
     const path = url.pathname;
@@ -42,11 +36,9 @@ export function parseChannelInput(input: string): {
     const userMatch = path.match(/\/user\/([\w.-]+)/);
     if (userMatch) return { type: 'username', value: userMatch[1] };
 
-    // Bare path like "youtube.com/mkbhd"
     const bare = path.replace(/^\//, '');
     if (bare && !bare.includes('/')) return { type: 'handle', value: bare };
   } catch {
-    // Not a URL — treat as bare handle
     if (raw.startsWith('@')) return { type: 'handle', value: raw.slice(1) };
     return { type: 'handle', value: raw };
   }
@@ -61,7 +53,6 @@ export async function resolveChannelId(input: string): Promise<string> {
 
   if (parsed.type === 'id') return parsed.value;
 
-  // Search for channel by handle/username/custom
   const params = new URLSearchParams({
     key: apiKey(),
     part: 'snippet',
@@ -120,9 +111,7 @@ export async function fetchChannelInfo(channelId: string): Promise<ChannelInfo> 
 
 // ─── Videos ───────────────────────────────────────────────────────────────────
 
-/** Fetch video IDs from a channel's uploads playlist (up to maxResults). */
-async function fetchUploadedVideoIds(channelId: string, maxResults = 50): Promise<string[]> {
-  // Get uploads playlist ID
+async function fetchUploadedVideoIds(channelId: string): Promise<string[]> {
   const channelParams = new URLSearchParams({
     key: apiKey(),
     part: 'contentDetails',
@@ -131,19 +120,19 @@ async function fetchUploadedVideoIds(channelId: string, maxResults = 50): Promis
   const chRes = await fetch(`${BASE}/channels?${channelParams}`);
   const chData = await chRes.json();
   if (!chRes.ok) throw new Error(chData.error?.message || 'Failed to fetch channel uploads');
+
   const uploadsPlaylistId = chData.items?.[0]?.contentDetails?.relatedPlaylists?.uploads;
   if (!uploadsPlaylistId) throw new Error('Could not find uploads playlist for this channel');
 
-  // Page through playlist to collect video IDs
   const ids: string[] = [];
   let pageToken: string | undefined;
 
-  while (ids.length < maxResults) {
+  do {
     const plParams = new URLSearchParams({
       key: apiKey(),
       part: 'contentDetails',
       playlistId: uploadsPlaylistId,
-      maxResults: String(Math.min(50, maxResults - ids.length)),
+      maxResults: '50',
       ...(pageToken ? { pageToken } : {}),
     });
     const plRes = await fetch(`${BASE}/playlistItems?${plParams}`);
@@ -156,17 +145,14 @@ async function fetchUploadedVideoIds(channelId: string, maxResults = 50): Promis
     }
 
     pageToken = plData.nextPageToken;
-    if (!pageToken) break;
-  }
+  } while (pageToken);
 
   return ids;
 }
 
-/** Fetch full statistics + content details for up to 50 video IDs at a time. */
 async function fetchVideoDetails(videoIds: string[]): Promise<VideoItem[]> {
   if (!videoIds.length) return [];
 
-  // YouTube allows max 50 IDs per request
   const chunks: string[][] = [];
   for (let i = 0; i < videoIds.length; i += 50) {
     chunks.push(videoIds.slice(i, i + 50));
@@ -214,8 +200,8 @@ async function fetchVideoDetails(videoIds: string[]): Promise<VideoItem[]> {
         metrics,
         tags: v.snippet.tags || [],
         engagementRate: parseFloat(engagementRate.toFixed(3)),
-        isTrending: false,      // computed after sorting
-        performanceScore: 0,    // computed after all videos loaded
+        isTrending: false,
+        performanceScore: 0,
       });
     }
   }
@@ -223,7 +209,6 @@ async function fetchVideoDetails(videoIds: string[]): Promise<VideoItem[]> {
   return allItems;
 }
 
-/** Compute isTrending and performanceScore across the full video set. */
 function computeScores(videos: VideoItem[]): VideoItem[] {
   if (!videos.length) return videos;
 
@@ -231,7 +216,6 @@ function computeScores(videos: VideoItem[]): VideoItem[] {
   const maxLikes = Math.max(...videos.map((v) => v.metrics.likeCount));
   const maxEngagement = Math.max(...videos.map((v) => v.engagementRate));
 
-  // Top 20% by views are "trending"
   const sortedByViews = [...videos].sort((a, b) => b.metrics.viewCount - a.metrics.viewCount);
   const trendingThreshold = sortedByViews[Math.floor(sortedByViews.length * 0.2)]?.metrics.viewCount ?? 0;
 
@@ -248,16 +232,14 @@ function computeScores(videos: VideoItem[]): VideoItem[] {
   });
 }
 
-/** Main entry point — fetches and enriches all videos for a channel. */
-export async function fetchChannelVideos(channelId: string, maxResults = 50): Promise<VideoItem[]> {
-  const ids = await fetchUploadedVideoIds(channelId, maxResults);
+export async function fetchChannelVideos(channelId: string): Promise<VideoItem[]> {
+  const ids = await fetchUploadedVideoIds(channelId);
   const videos = await fetchVideoDetails(ids);
   return computeScores(videos);
 }
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 
-/** Converts ISO 8601 duration (PT4M13S) to total seconds. */
 export function parseIso8601Duration(duration: string): number {
   const match = duration.match(/PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?/);
   if (!match) return 0;
@@ -267,7 +249,6 @@ export function parseIso8601Duration(duration: string): number {
   return h * 3600 + m * 60 + s;
 }
 
-/** Formats seconds as mm:ss or h:mm:ss. */
 export function formatDuration(seconds: number): string {
   const h = Math.floor(seconds / 3600);
   const m = Math.floor((seconds % 3600) / 60);
@@ -276,7 +257,6 @@ export function formatDuration(seconds: number): string {
   return `${m}:${String(s).padStart(2, '0')}`;
 }
 
-/** Compact number formatting: 1.2M, 45K, etc. */
 export function formatCount(n: number): string {
   if (n >= 1_000_000_000) return `${(n / 1_000_000_000).toFixed(1)}B`;
   if (n >= 1_000_000) return `${(n / 1_000_000).toFixed(1)}M`;

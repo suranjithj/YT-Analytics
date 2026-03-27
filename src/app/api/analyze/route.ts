@@ -6,7 +6,6 @@ export async function GET(req: NextRequest) {
   try {
     const { searchParams } = new URL(req.url);
     const channelInput = searchParams.get('channel');
-    const max = parseInt(searchParams.get('max') || '50', 10);
 
     if (!channelInput) {
       return new Response(JSON.stringify({ error: 'Missing channel parameter' }), { status: 400 });
@@ -14,7 +13,7 @@ export async function GET(req: NextRequest) {
 
     const channelId = await resolveChannelId(channelInput);
     const channelInfo = await fetchChannelInfo(channelId);
-    const videos = await fetchChannelVideos(channelId, max);
+    const videos = await fetchChannelVideos(channelId);
 
     const result: AnalysisResult = {
       channel: channelInfo,

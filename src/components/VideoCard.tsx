@@ -28,7 +28,7 @@ export function VideoCard({ video, rank }: Props) {
       href={videoUrl}
       target="_blank"
       rel="noopener noreferrer"
-      className="group relative flex flex-col rounded-2xl border border-white/[0.07] bg-white/[0.02] hover:bg-white/[0.04] hover:border-white/[0.12] transition-all duration-200 overflow-hidden"
+      className="group relative flex mb-6 flex-col rounded-2xl border border-white/[0.07] bg-white/[0.02] hover:bg-white/[0.04] hover:border-white/[0.12] transition-all duration-200 overflow-hidden"
     >
       {/* Thumbnail */}
       <div className="relative aspect-video w-full bg-[#111113] overflow-hidden">

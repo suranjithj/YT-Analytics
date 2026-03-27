@@ -27,7 +27,7 @@ export function ChannelHeader({ channel, fetchedAt }: Props) {
   ];
 
   return (
-    <div className="rounded-2xl border border-white/[0.08] bg-white/[0.02] p-5 sm:p-6">
+    <div className="rounded-2xl border mt-6 border-white/[0.08] bg-white/[0.02] p-5 sm:p-6">
       <div className="flex flex-col sm:flex-row gap-5 items-start">
         {/* Thumbnail */}
         <a href={channelUrl} target="_blank" rel="noopener noreferrer" className="shrink-0">

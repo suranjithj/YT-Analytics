@@ -6,12 +6,12 @@ import { useTheme } from './ThemeProvider';
 import { Sun, Moon, Menu, X, Zap } from 'lucide-react';
 
 const NAV_LINKS = [
-  { label: 'Home',     href: '/' },
-  { label: 'Analyze',  href: '/analyze' },
-  { label: 'Features', href: '#features' },
-  { label: 'Pricing',  href: '#pricing' },
-  { label: 'About',    href: '#about' },
-  { label: 'Contact',  href: '#contact' },
+  { label: 'HOME',     href: '/' },
+  { label: 'ANALYZE',  href: '/analyze' },
+  { label: 'FEATURES', href: '#features' },
+  { label: 'PRICING',  href: '#pricing' },
+  { label: 'ABOUT',    href: '#about' },
+  { label: 'CONTACT',  href: '#contact' },
 ];
 
 export function Navbar() {
@@ -87,7 +87,7 @@ export function Navbar() {
                     key={link.label}
                     href={link.href}
                     onClick={(e) => { e.preventDefault(); handleAnchorClick(link.href); }}
-                    className="px-3 py-2 rounded-lg text-sm font-medium transition-colors"
+                    className="px-3 py-2 rounded-lg text-md font-medium transition-colors"
                     style={{ color: 'var(--text-secondary)' }}
                     onMouseOver={(e) => { (e.currentTarget).style.color = 'var(--text-primary)'; (e.currentTarget).style.background = 'var(--bg-elevated)'; }}
                     onMouseOut={(e) => { (e.currentTarget).style.color = 'var(--text-secondary)'; (e.currentTarget).style.background = 'transparent'; }}
